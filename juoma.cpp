@@ -24,11 +24,25 @@ int main()
     // list available drinks here
     const char* drinks[4] = {"Beer", "Koskenkorva", "Whiskey", "Milk"};
     
+    char winnerString[100];
+    int winner = 0;
+    
+    char result [100];
+    
     int i = 5;
     while(i--) {
         int roll = rand() % 100 + 1;
         int drink = rand() % 4;
-        printf("%s rolls %d for %s\n", players[i], roll, drinks[drink]);
+        sprintf(result, "%s rolls kukkuu %d for %s\n", players[i], roll, drinks[drink]);
+        printf("%s", result);
+        
+        if(roll > winner) {
+            winner = roll;
+            sprintf(winnerString, "%s", result);
+        }
+
     }
+    
+    printf("WINNER: %s", winnerString);
     return 0;
 }
